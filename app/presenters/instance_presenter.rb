@@ -5,9 +5,11 @@ class InstancePresenter
     :closed_registrations_message,
     :site_contact_email,
     :open_registrations,
+    :site_title,
     :prohibit_registrations_except_qiita_oauth,
     :site_description,
     :site_extended_description,
+    :site_terms,
     to: Setting
   )
 
