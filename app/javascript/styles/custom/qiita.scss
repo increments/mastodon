@@ -1,0 +1,86 @@
+.qiita {
+  .button {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .button-primary {
+    border-color: #4ea30a;
+    background-color: #59bb0c;
+    color: #fff;
+  }
+
+  .registration {
+    width: 100%;
+    text-transform: none;
+  }
+}
+
+.landing-page {
+  .header-wrapper {
+    .heading {
+      text-shadow: 0px 0px 3px black;
+    }
+
+    .mascot {
+      width: 280px;
+      bottom: -39px;
+      left: 20px;
+    }
+  }
+
+  .about-mastodon .button {
+    background: transparent;
+  }
+}
+
+.registrations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: darken($ui-base-color, 4%);
+  width: 280px;
+  padding: 15px 20px;
+  border-radius: 4px 4px 0 0;
+  line-height: initial;
+  position: relative;
+  z-index: 4;
+
+  hr {
+    border-color: white;
+    width: 100%;
+  }
+
+  .qiita {
+    width: 100%;
+    margin: 5px auto;
+    text-align: center;
+  }
+
+  .password_registration_closed_caution {
+    width: 300px;
+    margin: 10px auto;
+  }
+
+  .info a {
+    color: white;
+    text-transform: none;
+  }
+}

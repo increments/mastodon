@@ -7,15 +7,26 @@
 # For more information, see docs/Running-Mastodon/Administration-guide.md
 #
 defaults: &defaults
-  site_title: 'Mastodon'
+  site_title: Mastodon
   site_description: ''
   site_extended_description: ''
+  site_terms: ''
   site_contact_username: ''
   site_contact_email: ''
   open_registrations: true
   closed_registrations_message: ''
+  prohibit_registrations_except_qiita_oauth: false
+  open_deletion: true
+  timeline_preview: true
+  default_sensitive: false
+  unfollow_modal: false
   boost_modal: false
-  auto_play_gif: true
+  delete_modal: true
+  auto_play_gif: false
+  reduce_motion: false
+  system_font_ui: false
+  noindex: false
+  theme: 'qiita-light'
   notification_emails:
     follow: false
     reblog: false
@@ -26,6 +37,125 @@ defaults: &defaults
   interactions:
     must_be_follower: false
     must_be_following: false
+  reserved_usernames:
+    - admin
+    - support
+    - help
+    - root
+    - webmaster
+    - administrator
+    - qiita
+    - qiitan
+    - qiita_team
+    - increments
+    - staff
+    - advent-calendar
+    - advent-calendars
+    - qiitapoi
+    - "null"
+    - undefined
+    - empty
+    - nan
+    - undef
+    - exit
+    - eval
+    - about
+    - <%= Rails.env.test? ? 'account_with_test' : 'account' %>
+    - accounts
+    - user
+    - users
+    - adcal
+    - adcals
+    - api
+    - asct
+    - auth
+    - blog
+    - cal
+    - career
+    - cdn
+    - comment
+    - comments
+    - dashboard
+    - data
+    - datum
+    - deactivate
+    - developer
+    - docs
+    - draft_item
+    - draft_items
+    - following
+    - hackathon
+    - hackathons
+    - home
+    - image
+    - items
+    - job
+    - jobs
+    - kobito
+    - lab
+    - labs
+    - lgtm
+    - lgtms
+    - login
+    - logout
+    - mail
+    - mine
+    - notification
+    - notifications
+    - oauth
+    - oauths
+    - org
+    - organization
+    - organizations
+    - orgs
+    - patch
+    - patches
+    - privacy
+    - private
+    - profile
+    - profiles
+    - public
+    - tag
+    - tags
+    - recommended_user
+    - recommended_users
+    - search
+    - setting
+    - settings
+    - shop
+    - signin
+    - signup
+    - site
+    - staging
+    - state
+    - status
+    - team
+    - team-share
+    - teams
+    - template
+    - templates
+    - term
+    - terms
+    - www
+    - amazon
+    - apple
+    - dena
+    - facebook
+    - github
+    - google
+    - gree
+    - hatena
+    - microsoft
+    - recurit
+    - pawoo
+    - friends
+    - friends_nico
+    - dwango
+    - niconico
+    - twitter
+    - yahoo
+    - mixi
+  bootstrap_timeline_accounts: ''
 
 development:
   <<: *defaults

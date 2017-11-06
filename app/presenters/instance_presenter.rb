@@ -5,8 +5,11 @@ class InstancePresenter
     :closed_registrations_message,
     :site_contact_email,
     :open_registrations,
+    :site_title,
+    :prohibit_registrations_except_qiita_oauth,
     :site_description,
     :site_extended_description,
+    :site_terms,
     to: Setting
   )
 
@@ -19,7 +22,7 @@ class InstancePresenter
   end
 
   def status_count
-    Rails.cache.fetch('local_status_count') { Status.local.count }
+    Rails.cache.fetch('local_status_count') { Account.local.sum(:statuses_count) }
   end
 
   def domain_count
@@ -27,6 +30,18 @@ class InstancePresenter
   end
 
   def version_number
-    Mastodon::VERSION
+    Mastodon::Version
+  end
+
+  def source_url
+    Mastodon::Version.source_url
+  end
+
+  def thumbnail
+    @thumbnail ||= Rails.cache.fetch('site_uploads/thumbnail') { SiteUpload.find_by(var: 'thumbnail') }
+  end
+
+  def open_password_registrations
+    open_registrations && !prohibit_registrations_except_qiita_oauth
   end
 end

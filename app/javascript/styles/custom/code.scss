@@ -1,0 +1,13 @@
+code.hljs {
+  margin: 10px 0;
+  padding: 8px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: pre;
+
+  &.inline {
+    display: inline;
+    padding: 1px 6px;
+  }
+}

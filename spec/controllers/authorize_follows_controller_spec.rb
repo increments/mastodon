@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 describe AuthorizeFollowsController do
+  render_views
+
   describe 'GET #show' do
     describe 'when signed out' do
       it 'redirects to sign in page' do
@@ -28,7 +30,7 @@ describe AuthorizeFollowsController do
 
       it 'renders error when account cant be found' do
         service = double
-        allow(FollowRemoteAccountService).to receive(:new).and_return(service)
+        allow(ResolveRemoteAccountService).to receive(:new).and_return(service)
         allow(service).to receive(:call).with('missing@hostname').and_return(nil)
 
         get :show, params: { acct: 'acct:missing@hostname' }
@@ -38,7 +40,7 @@ describe AuthorizeFollowsController do
       end
 
       it 'sets account from url' do
-        account = double
+        account = Account.new
         service = double
         allow(FetchRemoteAccountService).to receive(:new).and_return(service)
         allow(service).to receive(:call).with('http://example.com').and_return(account)
@@ -46,19 +48,19 @@ describe AuthorizeFollowsController do
         get :show, params: { acct: 'http://example.com' }
 
         expect(response).to have_http_status(:success)
-        expect(service).to have_received(:call).with('http://example.com')
+        expect(assigns(:account)).to eq account
       end
 
       it 'sets account from acct uri' do
-        account = double
+        account = Account.new
         service = double
-        allow(FollowRemoteAccountService).to receive(:new).and_return(service)
+        allow(ResolveRemoteAccountService).to receive(:new).and_return(service)
         allow(service).to receive(:call).with('found@hostname').and_return(account)
 
         get :show, params: { acct: 'acct:found@hostname' }
 
         expect(response).to have_http_status(:success)
-        expect(service).to have_received(:call).with('found@hostname')
+        expect(assigns(:account)).to eq account
       end
     end
   end
@@ -92,7 +94,7 @@ describe AuthorizeFollowsController do
       end
 
       it 'follows account when found' do
-        target_account = double(id: '123')
+        target_account = Fabricate(:account)
         result_account = double(target_account: target_account)
         service = double
         allow(FollowService).to receive(:new).and_return(service)
@@ -101,7 +103,7 @@ describe AuthorizeFollowsController do
         post :create, params: { acct: 'acct:user@hostname' }
 
         expect(service).to have_received(:call).with(account, 'user@hostname')
-        expect(response).to redirect_to(web_url('accounts/123'))
+        expect(response).to render_template(:success)
       end
     end
   end

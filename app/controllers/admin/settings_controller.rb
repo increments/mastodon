@@ -2,38 +2,63 @@
 
 module Admin
   class SettingsController < BaseController
-    BOOLEAN_SETTINGS = %w(open_registrations).freeze
+    ADMIN_SETTINGS = %w(
+      site_contact_username
+      site_contact_email
+      site_title
+      site_description
+      site_extended_description
+      site_terms
+      open_registrations
+      closed_registrations_message
+      open_deletion
+      timeline_preview
+      bootstrap_timeline_accounts
+      thumbnail
+    ).freeze
 
-    def index
-      @settings = Setting.all_as_records
+    BOOLEAN_SETTINGS = %w(
+      open_registrations
+      open_deletion
+      timeline_preview
+      prohibit_registrations_except_qiita_oauth
+    ).freeze
+
+    UPLOAD_SETTINGS = %w(
+      thumbnail
+    ).freeze
+
+    def edit
+      @admin_settings = Form::AdminSettings.new
     end
 
     def update
-      @setting = Setting.where(var: params[:id]).first_or_initialize(var: params[:id])
-      @setting.update(value: value_for_update)
-
-      respond_to do |format|
-        format.html { redirect_to admin_settings_path }
-        format.json { respond_with_bip(@setting) }
+      settings_params.each do |key, value|
+        if UPLOAD_SETTINGS.include?(key)
+          upload = SiteUpload.where(var: key).first_or_initialize(var: key)
+          upload.update(file: value)
+        else
+          setting = Setting.where(var: key).first_or_initialize(var: key)
+          setting.update(value: value_for_update(key, value))
+        end
       end
+
+      flash[:notice] = I18n.t('generic.changes_saved_msg')
+      redirect_to edit_admin_settings_path
     end
 
     private
 
     def settings_params
-      params.require(:setting).permit(:value)
+      params.require(:form_admin_settings).permit(ADMIN_SETTINGS)
     end
 
-    def value_for_update
-      if updating_boolean_setting?
-        settings_params[:value] == 'true'
+    def value_for_update(key, value)
+      if BOOLEAN_SETTINGS.include?(key)
+        value == '1'
       else
-        settings_params[:value]
+        value
       end
-    end
-
-    def updating_boolean_setting?
-      BOOLEAN_SETTINGS.include?(params[:id])
     end
   end
 end

@@ -8,7 +8,9 @@ module Admin
       @reports = filtered_reports.page(params[:page])
     end
 
-    def show; end
+    def show
+      @form = Form::StatusBatch.new
+    end
 
     def update
       process_report
@@ -49,7 +51,7 @@ module Admin
     end
 
     def filtered_reports
-      ReportFilter.new(filter_params).results.order('id desc').includes(
+      ReportFilter.new(filter_params).results.order(id: :desc).includes(
         :account,
         :target_account
       )

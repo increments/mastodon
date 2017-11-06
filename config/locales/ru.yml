@@ -1,35 +1,19 @@
 ---
 ru:
   about:
-    about_mastodon: Mastodon - это <em>свободная</em> социальная сеть с <em>открытым исходным кодом</em>. Как <em>децентрализованная</em> альтернатива коммерческим платформам, Mastodon предотвращает риск монополизации Вашего общения одной компанией. Выберите сервер, которому Вы доверяете &mdash; что бы Вы ни выбрали, Вы сможете общаться со всеми остальными. Любой может запустить свой собственный узел Mastodon и участвовать в <em>социальной сети</em> совершенно бесшовно.
+    about_mastodon_html: Mastodon - это <em>свободная</em> социальная сеть с <em>открытым исходным кодом</em>. Как <em>децентрализованная</em> альтернатива коммерческим платформам, Mastodon предотвращает риск монополизации Вашего общения одной компанией. Выберите сервер, которому Вы доверяете &mdash; что бы Вы ни выбрали, Вы сможете общаться со всеми остальными. Любой может запустить свой собственный узел Mastodon и участвовать в <em>социальной сети</em> совершенно бесшовно.
     about_this: Об этом узле
-    apps: Приложения
-    business_email: 'Деловой e-mail:'
     closed_registrations: В данный момент регистрация на этом узле закрыта.
     contact: Связаться
     description_headline: Что такое %{domain}?
     domain_count_after: другими узлами
     domain_count_before: Связан с
-    features:
-      api: Открытый API для приложений и сервисов
-      blocks: Продвинутые инструменты блокирования и глушения
-      characters: 500 символов на пост
-      chronology: Хронологические ленты
-      ethics: 'Этичный дизайн: нет рекламы, нет слежения'
-      gifv: GIFV и короткие видео
-      privacy: Тонкие настройки приватности для каждого поста
-      public: Публичные ленты
-    features_headline: Что выделяет Mastodon
-    get_started: Начать
-    links: Ссылки
     other_instances: Другие узлы
     source_code: Исходный код
     status_count_after: статусов
     status_count_before: Опубликовано
-    terms: Условия
     user_count_after: пользователей
     user_count_before: Здесь живет
-    version: Версия    
   accounts:
     follow: Подписаться
     followers: Подписчики
@@ -102,8 +86,10 @@ ru:
       severity: Строгость
       show:
         affected_accounts:
+          few: Влияет на %{count} аккаунта в базе данных
+          many: Влияет на %{count} аккаунтов в базе данных
           one: Влияет на один аккаунт в базе данных
-          other: "Влияет на %{count} аккаунтов в базе данных"
+          other: Влияет на %{count} аккаунтов в базе данных
         retroactive:
           silence: Снять глушение со всех существующих аккаунтов этого домена
           suspend: Снять блокировку со всех существующих аккаунтов этого домена
@@ -111,13 +97,6 @@ ru:
         undo: Отменить
       title: Доменные блокировки
       undo: Отемнить
-    pubsubhubbub:
-      callback_url: Callback URL
-      confirmed: Подтверждено
-      expires_in: Истекает через
-      last_delivery: Последняя доставка
-      title: PubSubHubbub
-      topic: Тема
     reports:
       comment:
         label: Комментарий
@@ -137,20 +116,15 @@ ru:
       unresolved: Неразрешенные
       view: Просмотреть
     settings:
-      click_to_edit: Нажмите для изменения
       contact_information:
         email: Введите публичный e-mail
-        label: Контактная информация
         username: Введите имя пользователя
       registrations:
         closed_message:
           desc_html: Отображается на титульной странице, когда закрыта регистрация<br>Можно использовать HTML-теги
           title: Сообщение о закрытой регистрации
         open:
-          disabled: Закрыта
-          enabled: Открыта
           title: Открыть регистрацию
-      setting: Настройка
       site_description:
         desc_html: Отображается в качестве параграфа на титульной странице и используется в качестве мета-тега.<br>Можно использовать HTML-теги, в особенности <code>&lt;a&gt;</code> и <code>&lt;em&gt;</code>.
         title: Описание сайта
@@ -159,6 +133,13 @@ ru:
         title: Расширенное описание сайта
       site_title: Название сайта
       title: Настройки сайта
+    subscriptions:
+      callback_url: Callback URL
+      confirmed: Подтверждено
+      expires_in: Истекает через
+      last_delivery: Последняя доставка
+      title: WebSub
+      topic: Тема
     title: Администрирование
   application_mailer:
     settings: 'Изменить настройки e-mail: %{link}'
@@ -168,6 +149,8 @@ ru:
     invalid_url: Введенный URL неверен
   auth:
     change_password: Изменить пароль
+    delete_account: Удалить аккаунт
+    delete_account_html: Если Вы хотите удалить свой аккаунт, вы можете <a href="%{path}">перейти сюда</a>. У Вас будет запрошено подтверждение.
     didnt_get_confirmation: Не получили инструкцию для подтверждения?
     forgot_password: Забыли пароль?
     login: Войти
@@ -179,7 +162,6 @@ ru:
   authorize_follow:
     error: К сожалению, при поиске удаленного аккаунта возникла ошибка
     follow: Подписаться
-    prompt_html: 'Вы (<strong>%{self}</strong>) запросили подписку:'
     title: Подписаться на %{acct}
   datetime:
     distance_in_words:
@@ -195,6 +177,14 @@ ru:
       x_minutes: "%{count}мин"
       x_months: "%{count}мес"
       x_seconds: "%{count}сек"
+  deletes:
+    bad_password_msg: Не вышло, хакеры! Неверный пароль
+    confirm_password: Введите текущий пароль для подтверждения Вашей личности
+    description_html: Это действие <strong>перманентно и необратимо</strong> удалит контент Вашего аккаунта и деактивирует его. Ваше имя пользователя будет зарезервировано для предотвращения имперсонации в будущем.
+    proceed: Удалить аккаунт
+    success_msg: Ваш аккаунт был успешно удален
+    warning_html: Гарантируется удаление контента только на этом узле. Широко распространившийся контент, скорее всего, оставит следы. Сервера, отключенные от сети или отписавшиеся от Ваших обновлений, не обновят свои базы данных.
+    warning_title: О доступности распространившегося контента
   errors:
     '403': У Вас нет доступа к просмотру этой страницы.
     '404': Страница, которую Вы искали, не существует.
@@ -202,6 +192,8 @@ ru:
     '422':
       content: Проверка безопасности не удалась. Возможно, Вы блокируете cookies?
       title: Проверка безопасности не удалась.
+    '429': Слишком много запросов
+    noscript_html: Для работы с Mastodon, пожалуйста, включите JavaScript.
   exports:
     blocks: Список блокировки
     csv: CSV
@@ -212,12 +204,12 @@ ru:
     domain: Домен
     explanation_html: Если Вы хотите быть уверены в приватности Ваших статусов, Вы должны иметь четкое представление о том, кто на Вас подписан. <strong>Ваши приватные статусы отправляются всем узлам, на которых у Вас есть подписчики</strong>. Рекомендуем удалить из подписчиков пользователей узлов, администрации или программному обеспечению которых Вы не доверяете.
     followers_count: Количество подписчиков
-    lock_link: Закрыть аккаунт
+    lock_link: Закройте аккаунт
     purge: Удалить из подписчиков
     success:
       one: В процессе мягкой блокировки подписчиков с одного домена...
       other: В процессе мягкой блокировки подписчиков с %{count} доменов...
-    true_privacy_html: Пожалуйста, заметьте, что <strong>настоящая приватность может быть достигнута тольк при помощи end-to-end шифрования</strong>.
+    true_privacy_html: Пожалуйста, заметьте, что <strong>настоящая конфиденциальность может быть достигнута только при помощи end-to-end шифрования</strong>.
     unlocked_warning_html: Кто угодно может подписаться на Вас и получить доступ к просмотру Ваших приватных статусов. %{lock_link}, чтобы получить возможность рассматривать и вручную подтверждать запросы о подписке.
     unlocked_warning_title: Ваш аккаунт не закрыт для подписки
   generic:
@@ -235,7 +227,8 @@ ru:
       following: Подписки
       muting: Список глушения
     upload: Загрузить
-  landing_strip_html: <strong>%{name}</strong> - пользователь на %{link_to_root_path}. Вы можете подписаться на него/нее и общаться с ним/ней, если у Вас есть аккаунт на любом узле общей сети. Если у Вас его нет, вы можете <a href="%{sign_up_path}">зарегистрироваться здесь</a>.
+  landing_strip_html: "<strong>%{name}</strong> - пользователь на %{link_to_root_path}. Вы можете подписаться на него/нее и общаться с ним/ней, если у Вас есть аккаунт на любом узле общей сети."
+  landing_strip_signup_html: Если у Вас его нет, вы можете <a href="%{sign_up_path}">зарегистрироваться здесь</a>.
   media_attachments:
     validations:
       images_and_video: Нельзя добавить видео к статусу с изображениями
@@ -245,9 +238,13 @@ ru:
       body: 'Кратко о пропущенном Вами на %{instance} с Вашего последнего захода %{since}:'
       mention: "%{name} упомянул(а) Вас в:"
       new_followers_summary:
+        few: У Вас появилось %{count} новых подписчика! Отлично!
+        many: У Вас появилось %{count} новых подписчиков! Отлично!
         one: У Вас появился новый подписчик! Ура!
-        other: У Вас появилось %{count} новых подписчика(-ов)! Отлично!
+        other: У Вас появилось %{count} новых подписчиков! Отлично!
       subject:
+        few: "%{count} новых уведомления с Вашего последнего захода \U0001F418"
+        many: "%{count} новых уведомлений с Вашего последнего захода \U0001F418"
         one: "1 новое уведомление с Вашего последнего захода \U0001F418"
         other: "%{count} новых уведомлений с Вашего последнего захода \U0001F418"
     favourite:
@@ -265,18 +262,79 @@ ru:
     reblog:
       body: 'Ваш статус был продвинут %{name}:'
       subject: "%{name} продвинул(а) Ваш статус"
+  number:
+    human:
+      decimal_units:
+        format: "%n%u"
+        units:
+          billion: B
+          million: M
+          quadrillion: Q
+          thousand: K
+          trillion: T
+          unit: ''
   pagination:
     next: След
     prev: Пред
     truncate: "&hellip;"
+  push_notifications:
+    favourite:
+      title: Ваш статус понравился %{name}
+    follow:
+      title: "%{name} теперь подписан(а) на Вас"
+    mention:
+      action_boost: Продвинуть
+      action_expand: Развернуть
+      action_favourite: Нравится
+      title: Вас упомянул(а) %{name}
+    reblog:
+      title: "%{name} продвинул(а) Ваш статус"
   remote_follow:
     acct: Введите username@domain, откуда Вы хотите подписаться
     missing_resource: Поиск требуемого перенаправления URL для Вашего аккаунта завершился неудачей
     proceed: Продолжить подписку
     prompt: 'Вы хотите подписаться на:'
+  sessions:
+    activity: Последняя активность
+    browser: Браузер
+    browsers:
+      alipay: Alipay
+      blackberry: Blackberry
+      chrome: Chrome
+      edge: Microsoft Edge
+      firefox: Firefox
+      generic: Неизвестный браузер
+      ie: Internet Explorer
+      micro_messenger: MicroMessenger
+      nokia: Nokia S40 Ovi Browser
+      opera: Opera
+      phantom_js: PhantomJS
+      qq: QQ Browser
+      safari: Safari
+      uc_browser: UCBrowser
+      weibo: Weibo
+    current_session: Текущая сессия
+    description: "%{browser} на %{platform}"
+    explanation: Это веб-браузеры, в которых на данный момент выполнен вход в Ваш аккаунт Mastodon.
+    ip: IP
+    platforms:
+      adobe_air: Adobe Air
+      android: Android
+      blackberry: Blackberry
+      chrome_os: ChromeOS
+      firefox_os: Firefox OS
+      ios: iOS
+      linux: Linux
+      mac: Mac
+      other: неизвестной платформе
+      windows: Windows
+      windows_mobile: Windows Mobile
+      windows_phone: Windows Phone
+    title: Сессии
   settings:
     authorized_apps: Авторизованные приложения
     back: Назад в Mastodon
+    delete: Удаление аккаунта
     edit_profile: Изменить профиль
     export: Экспорт данных
     followers: Авторизованные подписчики
@@ -299,6 +357,8 @@ ru:
     click_to_show: Показать
     reblogged: продвинул(а)
     sensitive_content: Чувствительный контент
+  terms:
+    title: Условия обслуживания и политика конфиденциальности %{instance}
   time:
     formats:
       default: "%b %d, %Y, %H:%M"
@@ -313,7 +373,7 @@ ru:
     lost_recovery_codes: Коды восстановления позволяют вернуть доступ к аккаунту в случае утери телефона. Если Вы потеряли Ваши коды восстановления, вы можете заново сгенерировать их здесь. Ваши старые коды восстановления будут аннулированы.
     manual_instructions: 'Если Вы не можете отсканировать QR-код и хотите ввести его вручную, секрет представлен здесь открытым текстом:'
     recovery_codes_regenerated: Коды восстановления успешно сгенерированы
-    recovery_instructions: В случае утери доступа к Вашему телефону Вы можете использовать один из кодов восстановления, указанных ниже, чтобы вернуть доступ к аккаунту. Держите коды восстановления в безопасности, например, распечатав их и храня с другими важными документами.
+    recovery_instructions_html: В случае утери доступа к Вашему телефону Вы можете использовать один из кодов восстановления, указанных ниже, чтобы вернуть доступ к аккаунту. Держите коды восстановления в безопасности, например, распечатав их и храня с другими важными документами.
     setup: Настроить
     wrong_code: Введенный код неверен! Правильно ли установлены серверное время и время устройства?
   users:

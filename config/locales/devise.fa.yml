@@ -17,7 +17,7 @@ fa:
       unconfirmed: برای ادامه باید نشانی ایمیل خود را تأیید کنید.
     mailer:
       confirmation_instructions:
-        subject: 'Mastodon: راهنمایی برای تأیید %{instance}'
+        subject: 'ماستدون: راهنمایی برای تأیید %{instance}'
       password_change:
         subject: 'ماستدون: رمزتان عوض شد'
       reset_password_instructions:
@@ -57,5 +57,5 @@ fa:
       not_found: پیدا نشد
       not_locked: قفل نبود
       not_saved:
-        one: 'خطایی نگذاشت که این %{resource} ذخیره شود'
-        other: "به خاطر %{count} خطا، این %{resource} ذخیره نشد"
+        one: خطایی نگذاشت که این %{resource} ذخیره شود
+        other: به خاطر %{count} خطا، این %{resource} ذخیره نشد

@@ -1,0 +1,50 @@
+.account__header {
+  .account__header__usernames {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .account__header__username {
+    display: inline;
+  }
+
+  .account__header__qiita--username:before {
+    content: ' ';
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+    vertical-align: middle;
+    background: url('../images/qiita-icon.png');
+    background-size: 14px;
+    margin: 0 2px;
+  }
+
+  .account__header__qiita--username a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.getting-started {
+  background: url('../images/qiitadon-getting-started.png') no-repeat 0 100%/contain local;
+}
+
+.missing-indicator {
+  padding-top: 210px;
+
+  & > div {
+    background: url('../images/qiitan-cry.png') no-repeat center top;
+    padding-top: 250px;
+  }
+}
+
+.onboarding-modal__page-one__elephant-friend {
+  background: url('../images/qiitan.png') no-repeat center center / contain;
+  width: 147px;
+  height: 160px;
+  margin-right: 10px;
+}

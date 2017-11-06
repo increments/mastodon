@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AuthorizeFollowsController < ApplicationController
-  layout 'public'
+  layout 'modal'
 
   before_action :authenticate_user!
 
@@ -15,7 +15,7 @@ class AuthorizeFollowsController < ApplicationController
     if @account.nil?
       render :error
     else
-      redirect_to web_url("accounts/#{@account.id}")
+      render :success
     end
   rescue ActiveRecord::RecordNotFound, Mastodon::NotPermittedError
     render :error
@@ -40,11 +40,11 @@ class AuthorizeFollowsController < ApplicationController
   end
 
   def account_from_remote_follow
-    FollowRemoteAccountService.new.call(acct_without_prefix)
+    ResolveRemoteAccountService.new.call(acct_without_prefix)
   end
 
   def acct_param_is_url?
-    parsed_uri.path && %w[http https].include?(parsed_uri.scheme)
+    parsed_uri.path && %w(http https).include?(parsed_uri.scheme)
   end
 
   def parsed_uri
