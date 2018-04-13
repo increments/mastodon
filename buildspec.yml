@@ -1,0 +1,27 @@
+version: 0.2
+ 
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email)
+      - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_NAME}
+      - IMAGE_TAG=$(echo ${CODEBUILD_RESOLVED_SOURCE_VERSION} | cut -c 1-7)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...  
+      - docker build --tag mastodon .
+      - docker run --env SMTP_FROM_ADDRESS=dummy --env SECRET_KEY_BASE=dummy --volume $(pwd)/public/assets:/mastodon/public/assets --volume $(pwd)/public/packs:/mastodon/public/packs mastodon bundle exec rake assets:precompile
+      - rm .dockerignore
+      - docker build --tag ${REPOSITORY_URI}:${IMAGE_TAG} .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push ${REPOSITORY_URI}:latest
+      - docker push ${REPOSITORY_URI}:${IMAGE_TAG}
+      - printf '[{"name":"%s","imageUri":"%s"}]' ${IMAGE_NAME} ${REPOSITORY_URI}:${IMAGE_TAG} > imagedefinitions.json
+artifacts:
+     files: imagedefinitions.json
