@@ -3,7 +3,7 @@
 #
 # Table name: users
 #
-#  id                        :integer          not null, primary key
+#  id                        :bigint(8)        not null, primary key
 #  email                     :string           default(""), not null
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
@@ -31,10 +31,10 @@
 #  otp_backup_codes          :string           is an Array
 #  dummy_password_flag       :boolean          default(FALSE), not null
 #  filtered_languages        :string           default([]), not null, is an Array
-#  account_id                :integer          not null
+#  account_id                :bigint(8)        not null
 #  disabled                  :boolean          default(FALSE), not null
 #  moderator                 :boolean          default(FALSE), not null
-#  invite_id                 :integer
+#  invite_id                 :bigint(8)
 #  remember_token            :string
 #
 
@@ -42,7 +42,7 @@ class User < ApplicationRecord
   include Settings::Extend
   include Omniauthable
 
-  ACTIVE_DURATION = 14.days
+  ACTIVE_DURATION = 7.days
 
   devise :two_factor_authenticatable,
          otp_secret_encryption_key: Rails.configuration.x.otp_secret
@@ -246,7 +246,7 @@ class User < ApplicationRecord
   end
 
   def web_push_subscription(session)
-    session.web_push_subscription.nil? ? nil : session.web_push_subscription.as_payload
+    session.web_push_subscription.nil? ? nil : session.web_push_subscription
   end
 
   def invite_code=(code)
