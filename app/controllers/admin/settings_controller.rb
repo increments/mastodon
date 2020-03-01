@@ -21,6 +21,7 @@ module Admin
       activity_api_enabled
       peers_api_enabled
       show_known_fediverse_at_about_page
+      preview_sensitive_media
       prohibit_registrations_except_qiita_oauth
     ).freeze
 
@@ -32,6 +33,7 @@ module Admin
       activity_api_enabled
       peers_api_enabled
       show_known_fediverse_at_about_page
+      preview_sensitive_media
       prohibit_registrations_except_qiita_oauth
     ).freeze
 
