@@ -1,2 +1,2 @@
-qiita-light: styles/qiita-light.scss
-qiita-dark: styles/qiita-dark.scss
+default: styles/application.scss
+contrast: styles/contrast.scss
