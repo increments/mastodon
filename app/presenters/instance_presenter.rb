@@ -19,7 +19,7 @@ class InstancePresenter
   end
 
   def user_count
-    Rails.cache.fetch('user_count') { User.confirmed.count }
+    Rails.cache.fetch('user_count') { User.confirmed.joins(:account).merge(Account.without_suspended).count }
   end
 
   def status_count
