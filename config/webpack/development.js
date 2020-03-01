@@ -16,6 +16,8 @@ if (process.env.VAGRANT || process.env.DOCKER) {
 }
 
 module.exports = merge(sharedConfig, {
+  mode: 'development',
+
   devtool: 'cheap-module-eval-source-map',
 
   stats: {

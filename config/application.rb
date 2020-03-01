@@ -39,6 +39,7 @@ module Mastodon
     config.i18n.available_locales = [
       :en,
       :ar,
+      :ast,
       :bg,
       :ca,
       :co,
@@ -60,6 +61,7 @@ module Mastodon
       :io,
       :it,
       :ja,
+      :ka,
       :ko,
       :nl,
       :no,

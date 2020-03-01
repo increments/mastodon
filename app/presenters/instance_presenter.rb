@@ -7,6 +7,7 @@ class InstancePresenter
     :open_registrations,
     :site_title,
     :prohibit_registrations_except_qiita_oauth,
+    :site_short_description,
     :site_description,
     :site_extended_description,
     :site_terms,
@@ -14,7 +15,7 @@ class InstancePresenter
   )
 
   def contact_account
-    Account.find_local(Setting.site_contact_username)
+    Account.find_local(Setting.site_contact_username.gsub(/\A@/, ''))
   end
 
   def user_count
